@@ -1,12 +1,13 @@
 <template>
     <div class="pt-4 pb-3">
-        <h3>Customer Details</h3>
+        <h3>Movie Details</h3>
         <div class="card" style="width: 50%;">
             <div class="card-body">
-                <h5 class="card-title">{{customer.name}} - {{ customer.id }}</h5>
+                <img src="imageUrl"/>
+                <h5 class="card-title">{{movie.title}} - {{ movie.id }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{this.role}}</h6>
-                <p class="card-text">Email: {{ customer.email }}</p>
-                <p class="card-text">Last Update: {{ this.updated }}</p>
+                <p class="card-text">Rating: {{ movie.rating }}</p>
+                <p class="card-text">Length: {{ movie.length }}</p>
             </div>
         </div>
 
@@ -14,12 +15,14 @@
 </template>
 <script>
 
-  function Customer ({ id, name, email, isAdmin, updated_at }) {
+  function Movie ({ id, title, rating, length, onDvd, onBluRay }) {
     this.id = parseInt(id)
-    this.name = name
-    this.email = email
-    this.isAdmin = isAdmin
-    this.updated_at = updated_at
+    this.title = title
+    this.rating = rating
+    this.length = length
+    this.onDvd = onDvd
+    this.onBluRay = onBluRay
+
   }
 
   export default {

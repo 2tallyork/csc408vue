@@ -35,7 +35,7 @@
         this.transaction = pivot
     }
 
-    import MovieComponent from '@/components/MovieComponent.vue'
+    import MovieRentalComponent from '@/components/MovieRentalComponent.vue'
 
     export default {
         data() {
@@ -62,7 +62,7 @@
             }
         },
         components: {
-            MovieComponent
+            MovieRentalComponent
         },
         created() {
             this.id = this.$route.params.userId

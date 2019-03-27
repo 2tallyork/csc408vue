@@ -1,37 +1,40 @@
 <template>
     <div class="about pt-4 pb-3">
-        <h1>Yellow Box Customers</h1>
+        <h1>Yellow Box Movies</h1>
 
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Rating</th>
                 <th>Length</th>
-                <th>Description</th>
+                <th>onDvd</th>
+                <th>onBluRay</th>
             </tr>
             </thead>
             <tbody>
-            <customer-component
+            <movie-component
                     v-for="(movie, index) in movies"
                     v-bind="movie"
                     :index="index"
                     :key="movie.id"
                     @view="view"
                     @rentals="rentals"
-            ></customer-component>
+            ></movie-component>
             </tbody>
         </table>
     </div>
 </template>
 <script>
 
-  function Customer ({ id, title, rating, length, description }) {
+  function Movie ({ id, title, rating, length, onDvd, onBluRay }) {
     this.id = parseInt(id)
     this.title = title
     this.rating = rating
     this.length = length
-    this.descriptiong = description
+    this.onDvd = onDvd
+    this.onBluRay = onBluRay
   }
 
   /* Go get the code for the customer-component tag that is in the template */
@@ -55,7 +58,7 @@
       view (id) {
       },
       rentals (id) {
-      } 
+      }
     },
     components: {
       MovieComponent

@@ -1,14 +1,13 @@
 <template>
     <tr>
-        <td>{{ img }}</td>
-        <td>{{ title }}</td>
+        <td><img :src="imageUrl" style="width: 75px;" /></td>
+        <td>{{ title }} <br /><br />
+        <div class="btn btn-sm btn-success"><router-link :to="'/movie-details/' + this.id">View</router-link></div>
+        <div class="btn btn-sm btn-dark"><router-link :to="'/movie-details/' + this.id + '/rentals'">Rentals</router-link></div>
+</td>
         <td>{{ rating }}</td>
         <td>{{ length }}</td>
-        <td>{{ description }}</td>
-        <td>
-            <div class="btn btn-sm btn-success"><router-link :to="'/movie-details/' + this.id">View</router-link></div>
-            <div class="btn btn-sm btn-dark"><router-link :to="'/movie-details/' + this.id + '/rentals'">Rentals</router-link></div>
-        </td>
+
     </tr>
 </template>
 
@@ -30,7 +29,13 @@ export default {
         this.$emit('rentals', this.id);
       }
     },
-    props: ['id', 'title', 'rating', 'length', 'description']
+    computed: {
+        /* Build URL for image */
+        imageUrl: function(){
+          return   "http://codeflare.tech/images/movie_" + this.id + ".jpg";
+        }
+      },
+    props: ['id', 'title', 'rating', 'length', 'onDvd', 'onBluRay']
 }
 </script>
 
