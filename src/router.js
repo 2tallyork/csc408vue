@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import CustomerDetails from './views/CustomerDetails'
+import MovieDetails from './views/MovieDetails'
 
 Vue.use(Router)
 
@@ -45,6 +46,23 @@ export default new Router({
       // this generates a separate chunk (customers.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "customers" */ './views/CustomerRentals.vue')
-    }
+    },
+    {
+      path: '/movies',
+      name: 'movies',
+      // route level code-splitting
+      // this generates a separate chunk (customers.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "customers" */ './views/Movie.vue')
+    },
+    {
+      path: '/movie-details/:userId',
+      name: 'movie-details',
+      // component: CustomerDetails
+      // route level code-splitting
+      // this generates a separate chunk (customers.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "customers" */ './views/MovieDetails.vue')
+    },
   ]
 })

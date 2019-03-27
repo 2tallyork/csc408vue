@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Movies</router-link> |
+      <router-link to="/movies">Movies</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/customers">Customers</router-link>
     </div>
@@ -27,9 +27,9 @@
   padding: 30px;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: white;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #3d4d77;
     }
   }
 }
