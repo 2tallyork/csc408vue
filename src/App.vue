@@ -1,9 +1,14 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/movies">Movies</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/customers">Customers</router-link>
+    <div class="row">
+    <h4 style="text-align: left; padding-left: 10px; padding-right: 25px; text-decoration: none;"><router-link to="/movies">RedBlocks</router-link></h4>
+    <div class="navbar-btns">
+      <router-link to="/movies" style="padding: 0px 5px;">Movies</router-link> |
+      <router-link to="/about" style="padding: 0px 5px;">About</router-link> |
+      <router-link to="/customers" style="padding: 0px 5px;">Customers</router-link>
+      </div>
+      </div>
     </div>
     <router-view/>
   </div>
@@ -25,11 +30,22 @@
 }
 #nav {
   padding: 30px;
+  h5 a:hover {
+    text-decoration: none;
+  }
+  .navbar-btns {
+    margin-top: 4px;
+  }
+
+  h5 a {
+    color: #2c3e50 !important;
+  }
   a {
-    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+
     color: white;
     &.router-link-exact-active {
-      color: #3d4d77;
+      color: #7b7d82;
     }
   }
 }

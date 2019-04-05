@@ -1,25 +1,23 @@
 <template>
     <div class="about pt-4 pb-3">
-        <h1>Customer Rentals</h1>
+        <h1>Movie Rentals History</h1>
 
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Rating</th>
-                <th>Length (min)</th>
-                <th>Type</th>
+                <th>Name</th>
+                <th>Disc Type</th>
                 <th>Rented</th>
                 <th>Returned</th>
             </tr>
             </thead>
             <tbody>
-            <movie-rental-component
+            <customer-rental-component
                     v-for="(rental, index) in rentals"
                     v-bind="rental"
                     :index="index"
                     :key="rental.id"
-            ></movie-rental-component>
+            ></customer-rental-component>
 
             </tbody>
         </table>
@@ -27,31 +25,29 @@
 </template>
 <script>
 
-    function Rental({id, title, rating, length, pivot}) {
+    function Rental({id, name, pivot}) {
         this.id = parseInt(pivot.id)
-        this.title = title
-        this.rating = rating
-        this.length = length
+        this.name = name
         this.transaction = pivot
     }
 
-    import MovieComponent from '@/components/MovieComponent.vue'
+    import CustomerRentalComponent from '@/components/CustomerRentalComponent.vue'
 
     export default {
         data() {
             return {
                 id: null,
-                customer_name: '',
+                title: '',
                 rentals: []
             }
         },
         methods: {
             read() {
-                let url = 'https://codeflare.tech/api/customers/' + this.id + '/rentals'
+                let url = 'https://codeflare.tech/api/movies/' + this.id + '/rentals'
                 window.axios.get(url).then(({data}) => {
-                    this.customer_name = data[0].name;
+                    this.title= data[0].title;
 
-                    console.log(this.customer_name);
+                    console.log(this.title);
                     console.log(data[0]);
 
                     data[0].rentals.forEach(rental => {
@@ -62,7 +58,7 @@
             }
         },
         components: {
-            MovieComponent
+            CustomerRentalComponent
         },
         created() {
             this.id = this.$route.params.userId

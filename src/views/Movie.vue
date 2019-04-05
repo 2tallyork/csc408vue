@@ -1,19 +1,10 @@
 <template>
     <div class="about pt-4 pb-3">
-        <h1>Yellow Box Movies</h1>
-
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Rating</th>
-                <th>Length</th>
-                <th>onDvd</th>
-                <th>onBluRay</th>
-            </tr>
-            </thead>
-            <tbody>
+        <h1 class="page-header">MOVIES</h1>
+<hr>
+<div class="container">
+<div class="content">
+<div class="row">
             <movie-component
                     v-for="(movie, index) in movies"
                     v-bind="movie"
@@ -25,19 +16,22 @@
             </tbody>
         </table>
     </div>
+    </div>
+    </div>
+    </div>
 </template>
 <script>
 
-  function Movie ({ id, title, rating, length, onDvd, onBluRay }) {
+  function Movie ({ id, title, rating, length, onDVD, onBluRay }) {
     this.id = parseInt(id)
     this.title = title
     this.rating = rating
     this.length = length
-    this.onDvd = onDvd
+    this.onDVD = onDVD
     this.onBluRay = onBluRay
   }
 
-  /* Go get the code for the customer-component tag that is in the template */
+  /* Go get the code for the movie-component tag that is in the template */
   import MovieComponent from '@/components/MovieComponent.vue'
 
   export default {
@@ -49,7 +43,7 @@
     methods: {
       read () {
         this.movies = []
-        window.axios.get('https://codeflare.tech/api/movies').then(({ data }) => {
+        window.axios.get('https://spenceryork.com/api/movies').then(({ data }) => {
           data.forEach(movie => {
                 this.movies.push(new Movie(movie))
             })
@@ -70,5 +64,20 @@
 </script>
 
 <style>
+hr {
+  border: 1px solid;
+  border-color: #dee5ef;
+  margin-bottom: 40px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400');
+.page-header {
+  font-family: 'Oswald:300', sans-serif;
+  font-size: 100px;
+  color: #b3b7bf;
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: 75px;
+}
 
 </style>

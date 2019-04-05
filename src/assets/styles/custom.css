@@ -1,10 +1,12 @@
 #nav {
-    background-color: #b1b1bc
+    background-color: #d39292;
+    padding: 20px;
 }
+
 
 #footer {
     padding: 10px;
-    background-color: #328eb2;
+    background-color: #d39292;
     color: #fffffd;
 }
 
